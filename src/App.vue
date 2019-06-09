@@ -55,13 +55,11 @@
 <script lang="ts">
 import Vue from 'vue';
 import Button from './components/Button.vue';
-import Display from './components/Display.vue';
 
 export default Vue.extend({
   name: 'app',
   components: {
     'appButton': Button,
-    'appDisplay': Display
   },
   data() {
     return {
