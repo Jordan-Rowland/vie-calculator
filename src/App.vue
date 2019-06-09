@@ -147,8 +147,8 @@ export default Vue.extend({
 .app-button {
   border: 1px solid black;
   border-radius: 10px;
-  width: 65px;
-  height: 65px;
+  width: 45px;
+  height: 45px;
   margin: auto;
   background-color: #def;
   margin-top: 13px;
@@ -157,7 +157,10 @@ export default Vue.extend({
 button {
   background-color: #def;
   border: none;
-  margin-top: 20px;
+  margin-top: 6px;
+  border-radius: 10px;
+  width: 100%;
+  height: 85%;
 }
 
 .app-button:hover, button:hover {

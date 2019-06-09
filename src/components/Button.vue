@@ -30,6 +30,6 @@ div:hover {
 }
 
 p {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 </style>
