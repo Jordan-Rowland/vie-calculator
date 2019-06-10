@@ -16,9 +16,9 @@
       <app-button
         class="operator" digit=")" @parentClicked="enter"></app-button>
       <app-button
-        class="operator" digit="C" @parentClicked="clear"></app-button>
-      <app-button
         class="operator" digit="del" @parentClicked="deleteDigit"></app-button>
+      <app-button
+        class="operator" digit="C" @parentClicked="clear"></app-button>
       <app-button digit="1" @parentClicked="enter"></app-button>
       <app-button digit="2" @parentClicked="enter"></app-button>
       <app-button digit="3" @parentClicked="enter"></app-button>
@@ -98,7 +98,7 @@ export default Vue.extend({
   text-align: center;
   color: #2c3e50;
   margin: auto;
-  margin-top: 60px;
+  /*margin-top: 60px;*/
   width: 400px;
   border: 2px solid black;
   border-radius: 7px;
