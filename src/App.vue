@@ -53,31 +53,39 @@ import Button from './components/Button.vue';
 
 export default Vue.extend({
   name: 'app',
+
   components: {
     'appButton': Button,
   },
+
   data() {
     return {
       formula: '',
       result: '',
     }
   },
+
   methods: {
-    enter(event) {
+
+    enter(event: String) {
       this.formula += event
     },
+
     calculate() {
       this.result = eval(this.formula.replace("÷", "/"))
     },
+
     clear() {
       this.formula = ''
       this.result = ''
     },
+
     deleteDigit() {
       this.formula = this.formula.substring(
         0, this.formula.length - 1)
     }
   }
+
 })
 </script>
 
