@@ -1,5 +1,5 @@
 # calculator
-Extremely basic Vue calculator
+Extremely basic Vue calculator  
 v.1
 ![](https://i.imgur.com/DwyFXxm.png)
 
