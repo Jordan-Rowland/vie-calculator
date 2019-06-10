@@ -30,6 +30,8 @@ div:hover {
 }
 
 p {
-  margin-top: 10px;
+  height: 65px;
+  padding-top: 20px;
+  /*border: 1px solid red;*/
 }
 </style>

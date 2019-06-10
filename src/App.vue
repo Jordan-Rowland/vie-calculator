@@ -2,9 +2,11 @@
   <div id="app">
     <div class="container">
     <div class="result-display">
+      <!-- <strong> -->
       {{ number1 }}
       {{ calculationType }}
       {{ number2 }}
+      <!-- </strong> -->
     </div>
     <br>
     <div class="columns">
@@ -90,25 +92,33 @@ export default Vue.extend({
       if (this.number2) {
         this.calculation()
       }
-      this.calculationType = '+'
+      if (this.number1) {
+        this.calculationType = '+'
+      }
     },
     subtract() {
       if (this.number2) {
         this.calculation()
       }
-      this.calculationType = '-'
+      if (this.number1) {
+        this.calculationType = '-'
+      }
     },
     multiply() {
       if (this.number2) {
         this.calculation()
       }
-      this.calculationType = '*'
+      if (this.number1) {
+        this.calculationType = '*'
+      }
     },
     divide() {
       if (this.number2) {
         this.calculation()
       }
-      this.calculationType = '/'
+      if (this.number1) {
+        this.calculationType = '/'
+      }
     },
     enterNumber(event) {
       if (!this.calculationType) {
@@ -141,36 +151,41 @@ export default Vue.extend({
   border: 2px solid black;
   border-radius: 7px;
   padding: 15px;
-  background-color: #ddf;
+  background-color: #def;
 }
 
 .app-button {
   border: 1px solid black;
   border-radius: 10px;
-  width: 45px;
-  height: 45px;
+  box-shadow: none;
+  width: 65px;
+  height: 65px;
   margin: auto;
-  background-color: #def;
-  margin-top: 13px;
-}
-
-button {
-  background-color: #def;
-  border: none;
-  margin-top: 6px;
-  border-radius: 10px;
-  width: 100%;
-  height: 85%;
+  background-color: #3f99aa;
+  margin-bottom: 13px;
 }
 
 .app-button:hover, button:hover {
   cursor: pointer;
 }
 
+button {
+  background-color: #3f99aa;
+  border: none;
+  padding-top: 6px;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+button:focus, button:active {
+  outline:none;
+}
+
 .result-display {
   background-color: #adf;
   height: 50px;
-  border: 1px solid #bcb;
+  border: 1px solid #bbc;
   border-radius: 8px;
   margin: auto;
   padding-top: 13px;
