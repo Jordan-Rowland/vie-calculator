@@ -2,56 +2,49 @@
   <div id="app">
     <div class="container">
     <div class="result-display">
-      <!-- <strong> -->
-      {{ number1 }}
-      {{ calculationType }}
-      {{ number2 }}
-      <!-- </strong> -->
+      {{ formula }}
+      <br>
+      <hr>
+      <strong>
+      {{ result }}
+      </strong>
     </div>
     <br>
     <div class="columns">
-      <div class="column col-3">
-        <div class="app-button">
-        <button @click="add">+</button>
-        </div>
-      </div>
-      <div class="column col-3">
-        <div class="app-button">
-        <button @click="subtract">-</button>
-        </div>
-      </div>
-      <div class="column col-3">
-        <div class="app-button">
-        <button @click="multiply">*</button>
-        </div>
-      </div>
-      <div class="column col-3">
-        <div class="app-button">
-        <button @click="divide">/</button>
-        </div>
-      </div>
-    <div class="column col-3"
-    v-for="number in buttonNumbers">
-    <div class="app-button">
       <app-button
-      :number="number"
-      @parentClicked="enterNumber"
-      ></app-button>
-    </div>
-    </div>
-    <div class="column col-3">
-    <div class="app-button">
-    <button @click="calculation">=</button>
-    </div>
-    </div>
-    <div class="column col-3">
-      <div class="app-button">
-      <button @click="clear">C</button>
-      </div>
-    </div>
-    </div>
+        class="operator" digit="(" @parentClicked="enter"></app-button>
+      <app-button
+        class="operator" digit=")" @parentClicked="enter"></app-button>
+      <app-button
+        class="operator" digit="C" @parentClicked="clear"></app-button>
+      <app-button
+        class="operator" digit="del" @parentClicked="deleteDigit"></app-button>
+      <app-button digit="1" @parentClicked="enter"></app-button>
+      <app-button digit="2" @parentClicked="enter"></app-button>
+      <app-button digit="3" @parentClicked="enter"></app-button>
+      <app-button
+        class="operator" digit="+" @parentClicked="enter"></app-button>
+      <app-button digit="4" @parentClicked="enter"></app-button>
+      <app-button digit="5" @parentClicked="enter"></app-button>
+      <app-button digit="6" @parentClicked="enter"></app-button>
+      <app-button
+        class="operator" digit="÷" @parentClicked="enter"></app-button>
+      <app-button digit="7" @parentClicked="enter"></app-button>
+      <app-button digit="8" @parentClicked="enter"></app-button>
+      <app-button digit="9" @parentClicked="enter"></app-button>
+      <app-button
+        class="operator" digit="*" @parentClicked="enter"></app-button>
+      <app-button class="zero-button"
+        digit="0" @parentClicked="enter"></app-button>
+      <app-button
+        digit="." @parentClicked="enter"></app-button>
+      <app-button
+        class="operator" digit="/" @parentClicked="enter"></app-button>
+      <app-button
+        class="operator long-button" digit="=" @parentClicked="calculate"></app-button>
     </div>
   </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -65,76 +58,27 @@ export default Vue.extend({
   },
   data() {
     return {
-      number1: '',
-      number2: '',
-      buttonNumbers: [1,2,3,4,5,6,7,8,9,0],
-      calculationType: ''
+      formula: '',
+      result: '',
     }
   },
   methods: {
-    calculation() {
-      if (this.calculationType === '+') {
-        this.number1 = Number(this.number1) + Number(this.number2)
-      }
-      else if (this.calculationType === '-') {
-        this.number1 = Number(this.number1) - Number(this.number2)
-      }
-      else if (this.calculationType === '*') {
-        this.number1 = Number(this.number1) * Number(this.number2)
-      }
-      else if (this.calculationType === '/') {
-        this.number1 = Number(this.number1) / Number(this.number2)
-      }
-      this.number2 = ''
-      this.calculationType = ''
+    enter(event) {
+      this.formula += event
     },
-    add() {
-      if (this.number2) {
-        this.calculation()
-      }
-      if (this.number1) {
-        this.calculationType = '+'
-      }
-    },
-    subtract() {
-      if (this.number2) {
-        this.calculation()
-      }
-      if (this.number1) {
-        this.calculationType = '-'
-      }
-    },
-    multiply() {
-      if (this.number2) {
-        this.calculation()
-      }
-      if (this.number1) {
-        this.calculationType = '*'
-      }
-    },
-    divide() {
-      if (this.number2) {
-        this.calculation()
-      }
-      if (this.number1) {
-        this.calculationType = '/'
-      }
-    },
-    enterNumber(event) {
-      if (!this.calculationType) {
-        this.number1 += String(event)
-      }
-      else {
-        this.number2 += String(event)
-      }
+    calculate() {
+      this.result = eval(this.formula.replace("÷", "/"))
     },
     clear() {
-      this.number1 = ''
-      this.number2 = ''
-      this.calculationType = ''
+      this.formula = ''
+      this.result = ''
+    },
+    deleteDigit() {
+      this.formula = this.formula.substring(
+        0, this.formula.length - 1)
     }
   }
-});
+})
 </script>
 
 <style scoped>
@@ -154,41 +98,36 @@ export default Vue.extend({
   background-color: #def;
 }
 
-.app-button {
-  border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: none;
-  width: 65px;
-  height: 65px;
-  margin: auto;
-  background-color: #3f99aa;
-  margin-bottom: 13px;
-}
-
-.app-button:hover, button:hover {
-  cursor: pointer;
-}
-
-button {
-  background-color: #3f99aa;
-  border: none;
-  padding-top: 6px;
-  border-radius: 10px;
-  width: 100%;
-  height: 100%;
-}
-
-button:focus, button:active {
-  outline:none;
-}
-
 .result-display {
   background-color: #adf;
-  height: 50px;
+  height: 80px;
   border: 1px solid #bbc;
   border-radius: 8px;
   margin: auto;
   padding-top: 13px;
+  text-align: right;
+}
+
+strong {
+  margin-right: 5px;
+  padding-top: 15px;
+}
+
+.zero-button {
+  width: 165px;
+}
+
+.long-button {
+  width: 350px;
+}
+
+hr {
+  border: solid #cce .5px;
+  margin-bottom: 2px;
+}
+
+.operator {
+  background-color: lightblue;
 }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div @click="clicked">
+  <div @click="clicked" class="app-button column col-4">
     <p>
-    {{ number }}
+    {{ digit }}
     </p>
   </div>
 </template>
@@ -10,7 +10,7 @@
 /* jshint esversion: 9 */
 export default {
   name: 'appbutton',
-  props: ["number"],
+  props: ["digit"],
   data() {
     return {
 
@@ -18,7 +18,8 @@ export default {
   },
   methods: {
     clicked() {
-      this.$emit('parentClicked', this.number)
+      // console.log('[button] clicked', this.digit)
+      this.$emit('parentClicked', this.digit)
     }
   }
 };
@@ -33,5 +34,20 @@ p {
   height: 65px;
   padding-top: 20px;
   /*border: 1px solid red;*/
+}
+
+.app-button {
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: none;
+  width: 75px;
+  height: 65px;
+  margin: auto;
+  background-color: #3f99aa;
+  margin-bottom: 13px;
+}
+
+.app-button:hover, button:hover {
+  cursor: pointer;
 }
 </style>
