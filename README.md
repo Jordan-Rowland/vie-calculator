@@ -1,5 +1,7 @@
 # calculator
 
+TODO: I just realized there's not subtraction button...
+
 Demo: http://simple-vue-calculator.herokuapp.com/
 
 Extremely basic Vue calculator  
